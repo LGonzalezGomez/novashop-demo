@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NovaShop · Zapatillas</title>
+  <style>
+    :root { --brand: #1C64F2; --ink: #111827; --muted: #6B7280; --line: #E5E7EB; --soft: #F3F4F6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: var(--ink); background: #fff; }
+    a { color: inherit; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--line); }
+    .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+    .logo span { color: var(--brand); }
+    nav { display: flex; gap: 20px; font-size: 15px; color: var(--muted); }
+    nav a { text-decoration: none; }
+    .hero { padding: 56px 24px; background: var(--soft); text-align: center; }
+    .hero h1 { margin: 0 0 12px; font-size: clamp(28px, 5vw, 44px); }
+    .hero p { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: 18px; }
+    .hero .cta { display: inline-block; margin-top: 24px; padding: 12px 22px; border-radius: 999px; background: var(--brand); color: #fff; text-decoration: none; font-weight: 600; }
+    .strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 32px; padding: 14px 24px; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--line); }
+    main { max-width: 1040px; margin: 0 auto; padding: 40px 24px 96px; }
+    h2 { margin: 0 0 20px; font-size: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .card { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .card .img { aspect-ratio: 4 / 3; background: linear-gradient(135deg, #E0E7FF, #F3F4F6); display: grid; place-items: center; font-size: 56px; }
+    .card .body { padding: 14px 16px 18px; }
+    .card h3 { margin: 0 0 6px; font-size: 17px; }
+    .card .price { color: var(--muted); }
+    .mobile-chat { display: none; margin: 0 0 28px; padding: 14px 16px; border-radius: 12px; background: var(--soft); font-size: 15px; }
+    footer { padding: 24px; text-align: center; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+
+    /* Marca dónde aparecerá el chat. Desaparece sola cuando la burbuja de Dify está en la página. */
+    .chat-placeholder { position: fixed; right: 16px; bottom: 16px; width: 160px; padding: 12px; border: 2px dashed var(--brand);
+      border-radius: 14px; background: #fff; color: var(--brand); font-size: 13px; font-weight: 600; text-align: center; }
+    body:has(#dify-chatbot-bubble-button) .chat-placeholder { display: none; }
+
+    @media (max-width: 640px) { nav { display: none; } .mobile-chat { display: block; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nova<span>Shop</span></div>
+    <nav><a href="#">Mujer</a><a href="#">Hombre</a><a href="#">Novedades</a><a href="#">Mi pedido</a></nav>
+  </header>
+
+  <section class="hero">
+    <h1>Zapatillas para cada día</h1>
+    <p>Cómodas, ligeras y con devolución sencilla.</p>
+    <a class="cta" href="#productos">Ver colección</a>
+  </section>
+
+  <div class="strip">
+    <span>Devoluciones en 21 días</span>
+    <span>Seguimiento de tu pedido online</span>
+    <span>Atención al cliente por chat</span>
+  </div>
+
+  <main>
+    <p class="mobile-chat">¿Desde el móvil? <a href="https://udify.app/chat/C6nh1QeoLxa1bBCY">Abre el chat a pantalla completa</a>.</p>
+    <h2 id="productos">Lo más vendido</h2>
+    <div class="grid">
+      <div class="card"><div class="img">👟</div><div class="body"><h3>Nova Run</h3><div class="price">89,90 €</div></div></div>
+      <div class="card"><div class="img">👟</div><div class="body"><h3>Nova Street</h3><div class="price">74,90 €</div></div></div>
+      <div class="card"><div class="img">👟</div><div class="body"><h3>Nova Trail</h3><div class="price">99,90 €</div></div></div>
+      <div class="card"><div class="img">👟</div><div class="body"><h3>Nova Kids</h3><div class="price">49,90 €</div></div></div>
+    </div>
+  </main>
+
+  <footer>Web de demostración para la sesión 8 del curso de PLN de EAE. NovaShop es una tienda ficticia.</footer>
+
+<script>
+ window.difyChatbotConfig = {
+  token: 'C6nh1QeoLxa1bBCY',
+  baseUrl: 'https://udify.app',
+  inputs: {
+    // You can define the inputs from the Start node here
+    // key is the variable name
+    // e.g.
+    // name: "NAME"
+  },
+  systemVariables: {
+    // user_id: 'YOU CAN DEFINE USER ID HERE',
+    // conversation_id: 'YOU CAN DEFINE CONVERSATION ID HERE, IT MUST BE A VALID UUID',
+  },
+  userVariables: {
+    // avatar_url: 'YOU CAN DEFINE USER AVATAR URL HERE',
+    // name: 'YOU CAN DEFINE USER NAME HERE',
+  },
+ }
+</script>
+<script
+ src="https://udify.app/embed.min.js"
+ id="C6nh1QeoLxa1bBCY"
+ defer>
+</script>
+<style>
+  #dify-chatbot-bubble-button {
+    background-color: #1C64F2 !important;
+  }
+  #dify-chatbot-bubble-window {
+    width: 24rem !important;
+    height: 40rem !important;
+  }
+</style>
+
+</body>
+</html>
